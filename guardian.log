@@ -1,0 +1,76 @@
+2025-10-13 21:55:30,823 - root - INFO - Creating baseline 'example_baseline' for path: C:\Users\slabf\AppData\Local\Temp\guardian_test__7s7vmse
+2025-10-13 21:55:30,824 - root - INFO - Scanning directory: C:\Users\slabf\AppData\Local\Temp\guardian_test__7s7vmse
+2025-10-13 21:55:30,845 - root - INFO - Scanned 4 files
+2025-10-13 21:55:30,849 - root - INFO - Baseline created successfully. ID: 1, Files: 4
+2025-10-13 21:55:30,850 - root - INFO - Checking integrity for path: C:\Users\slabf\AppData\Local\Temp\guardian_test__7s7vmse
+2025-10-13 21:55:30,851 - root - INFO - Scanning directory: C:\Users\slabf\AppData\Local\Temp\guardian_test__7s7vmse
+2025-10-13 21:55:30,852 - root - INFO - Scanned 4 files
+2025-10-13 21:55:30,852 - root - INFO - Integrity check completed. Changes detected: 0
+2025-10-13 21:55:30,854 - root - INFO - Checking integrity for path: C:\Users\slabf\AppData\Local\Temp\guardian_test__7s7vmse
+2025-10-13 21:55:30,854 - root - INFO - Scanning directory: C:\Users\slabf\AppData\Local\Temp\guardian_test__7s7vmse
+2025-10-13 21:55:30,866 - root - INFO - Scanned 4 files
+2025-10-13 21:55:30,869 - root - INFO - Integrity check completed. Changes detected: 3
+2025-10-13 21:55:30,871 - root - INFO - Checking integrity for path: C:\Users\slabf\AppData\Local\Temp\guardian_test__7s7vmse
+2025-10-13 21:55:30,871 - root - INFO - Scanning directory: C:\Users\slabf\AppData\Local\Temp\guardian_test__7s7vmse
+2025-10-13 21:55:30,872 - root - INFO - Scanned 4 files
+2025-10-13 21:55:30,875 - root - INFO - Integrity check completed. Changes detected: 3
+2025-10-13 21:55:37,494 - root - INFO - Creating baseline 'example_baseline' for path: C:\Users\slabf\AppData\Local\Temp\guardian_test_maw_e3p7
+2025-10-13 21:55:37,494 - root - INFO - Scanning directory: C:\Users\slabf\AppData\Local\Temp\guardian_test_maw_e3p7
+2025-10-13 21:55:37,497 - root - INFO - Scanned 4 files
+2025-10-13 21:55:37,500 - root - INFO - Baseline created successfully. ID: 2, Files: 4
+2025-10-13 21:55:37,502 - root - INFO - Checking integrity for path: C:\Users\slabf\AppData\Local\Temp\guardian_test_maw_e3p7
+2025-10-13 21:55:37,502 - root - INFO - Scanning directory: C:\Users\slabf\AppData\Local\Temp\guardian_test_maw_e3p7
+2025-10-13 21:55:37,503 - root - INFO - Scanned 4 files
+2025-10-13 21:55:37,503 - root - INFO - Integrity check completed. Changes detected: 0
+2025-10-13 21:55:37,504 - root - INFO - Checking integrity for path: C:\Users\slabf\AppData\Local\Temp\guardian_test_maw_e3p7
+2025-10-13 21:55:37,504 - root - INFO - Scanning directory: C:\Users\slabf\AppData\Local\Temp\guardian_test_maw_e3p7
+2025-10-13 21:55:37,506 - root - INFO - Scanned 4 files
+2025-10-13 21:55:37,509 - root - INFO - Integrity check completed. Changes detected: 3
+2025-10-13 21:55:37,510 - root - INFO - Checking integrity for path: C:\Users\slabf\AppData\Local\Temp\guardian_test_maw_e3p7
+2025-10-13 21:55:37,510 - root - INFO - Scanning directory: C:\Users\slabf\AppData\Local\Temp\guardian_test_maw_e3p7
+2025-10-13 21:55:37,511 - root - INFO - Scanned 4 files
+2025-10-13 21:55:37,514 - root - INFO - Integrity check completed. Changes detected: 3
+2025-10-13 22:02:07,522 - root - INFO - Creating baseline 'test_baseline' for path: .
+2025-10-13 22:02:07,522 - root - INFO - Scanning directory: C:\Users\slabf\OneDrive\Desktop\Desktop\Programming\Python\Guardian
+2025-10-13 22:02:07,525 - root - INFO - Scanned 11 files
+2025-10-13 22:02:07,528 - root - INFO - Baseline created successfully. ID: 6, Files: 11
+2025-10-13 22:02:10,675 - root - INFO - Checking integrity for path: .
+2025-10-13 22:02:10,675 - root - INFO - Scanning directory: C:\Users\slabf\OneDrive\Desktop\Desktop\Programming\Python\Guardian
+2025-10-13 22:02:10,678 - root - INFO - Scanned 11 files
+2025-10-13 22:02:10,680 - root - INFO - Integrity check completed. Changes detected: 1
+2025-10-13 22:02:29,550 - root - INFO - Checking integrity for path: .
+2025-10-13 22:02:29,551 - root - INFO - Scanning directory: C:\Users\slabf\OneDrive\Desktop\Desktop\Programming\Python\Guardian
+2025-10-13 22:02:29,560 - root - INFO - Scanned 11 files
+2025-10-13 22:02:29,564 - root - INFO - Integrity check completed. Changes detected: 4
+2025-10-13 22:05:49,998 - root - INFO - Creating baseline 'example_baseline' for path: C:\Users\slabf\AppData\Local\Temp\guardian_test_cs3l8bny
+2025-10-13 22:05:49,999 - root - INFO - Scanning directory: C:\Users\slabf\AppData\Local\Temp\guardian_test_cs3l8bny
+2025-10-13 22:05:50,002 - root - INFO - Scanned 4 files
+2025-10-13 22:05:50,005 - root - INFO - Baseline created successfully. ID: 12, Files: 4
+2025-10-13 22:05:50,007 - root - INFO - Checking integrity for path: C:\Users\slabf\AppData\Local\Temp\guardian_test_cs3l8bny
+2025-10-13 22:05:50,007 - root - INFO - Scanning directory: C:\Users\slabf\AppData\Local\Temp\guardian_test_cs3l8bny
+2025-10-13 22:05:50,008 - root - INFO - Scanned 4 files
+2025-10-13 22:05:50,008 - root - INFO - Integrity check completed. Changes detected: 0
+2025-10-13 22:05:50,010 - root - INFO - Checking integrity for path: C:\Users\slabf\AppData\Local\Temp\guardian_test_cs3l8bny
+2025-10-13 22:05:50,010 - root - INFO - Scanning directory: C:\Users\slabf\AppData\Local\Temp\guardian_test_cs3l8bny
+2025-10-13 22:05:50,012 - root - INFO - Scanned 4 files
+2025-10-13 22:05:50,015 - root - INFO - Integrity check completed. Changes detected: 3
+2025-10-13 22:05:50,016 - root - INFO - Checking integrity for path: C:\Users\slabf\AppData\Local\Temp\guardian_test_cs3l8bny
+2025-10-13 22:05:50,017 - root - INFO - Scanning directory: C:\Users\slabf\AppData\Local\Temp\guardian_test_cs3l8bny
+2025-10-13 22:05:50,018 - root - INFO - Scanned 4 files
+2025-10-13 22:05:50,020 - root - INFO - Integrity check completed. Changes detected: 3
+2025-10-13 22:12:01,180 - root - INFO - Creating baseline 'example_baseline' for path: C:\Users\slabf\AppData\Local\Temp\guardian_test_j9ifwwqz
+2025-10-13 22:12:01,180 - root - INFO - Scanning directory: C:\Users\slabf\AppData\Local\Temp\guardian_test_j9ifwwqz
+2025-10-13 22:12:01,184 - root - INFO - Scanned 4 files
+2025-10-13 22:12:01,187 - root - INFO - Baseline created successfully. ID: 13, Files: 4
+2025-10-13 22:12:01,189 - root - INFO - Checking integrity for path: C:\Users\slabf\AppData\Local\Temp\guardian_test_j9ifwwqz
+2025-10-13 22:12:01,189 - root - INFO - Scanning directory: C:\Users\slabf\AppData\Local\Temp\guardian_test_j9ifwwqz
+2025-10-13 22:12:01,190 - root - INFO - Scanned 4 files
+2025-10-13 22:12:01,190 - root - INFO - Integrity check completed. Changes detected: 0
+2025-10-13 22:12:01,192 - root - INFO - Checking integrity for path: C:\Users\slabf\AppData\Local\Temp\guardian_test_j9ifwwqz
+2025-10-13 22:12:01,192 - root - INFO - Scanning directory: C:\Users\slabf\AppData\Local\Temp\guardian_test_j9ifwwqz
+2025-10-13 22:12:01,194 - root - INFO - Scanned 4 files
+2025-10-13 22:12:01,197 - root - INFO - Integrity check completed. Changes detected: 3
+2025-10-13 22:12:01,198 - root - INFO - Checking integrity for path: C:\Users\slabf\AppData\Local\Temp\guardian_test_j9ifwwqz
+2025-10-13 22:12:01,198 - root - INFO - Scanning directory: C:\Users\slabf\AppData\Local\Temp\guardian_test_j9ifwwqz
+2025-10-13 22:12:01,199 - root - INFO - Scanned 4 files
+2025-10-13 22:12:01,202 - root - INFO - Integrity check completed. Changes detected: 3

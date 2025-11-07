@@ -1,0 +1,35 @@
+# Guardian FIM - File Integrity Monitor
+# Core dependencies
+
+# Standard library modules used:
+# - os, sys, hashlib, sqlite3, json, argparse, logging, time
+# - datetime, pathlib, typing, configparser, dataclasses, enum
+
+# Optional dependencies for enhanced functionality:
+# (Uncomment as needed)
+
+# For better performance with large files:
+# xxhash>=3.0.0
+
+# For email notifications:
+# smtplib (built-in)
+
+# For webhook notifications:
+# requests>=2.25.0
+
+# For GUI interface (optional):
+# tkinter (built-in with Python)
+
+# For system service integration:
+# psutil>=5.8.0
+
+# For advanced file monitoring:
+# watchdog>=2.1.0
+
+# For configuration validation:
+# jsonschema>=3.2.0
+
+# For testing:
+# pytest>=6.0.0
+# pytest-cov>=2.10.0
+
