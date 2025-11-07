@@ -1,38 +1,86 @@
-# Guardian - File Integrity Monitor (FIM)
+# 🛡️ Guardian - File Integrity Monitor (FIM)
 
-A comprehensive host-based intrusion detection system (HIDS) tool for monitoring file system changes and ensuring system integrity.
+A comprehensive **Host-Based Intrusion Detection System (HIDS)** tool for monitoring file system changes and ensuring system integrity.
+
+## Table of Contents
+- [Overview](#overview)
+- [Features](#features)
+  - [Core Functionality](#core-functionality)
+  - [Advanced Features](#advanced-features)
+- [Installation](#installation)
+  - [Prerequisites](#prerequisites)
+  - [Quick Start](#quick-start)
+- [Usage](#usage)
+  - [Command Line Interface](#command-line-interface)
+    - [Create a Baseline](#create-a-baseline)
+    - [Check Integrity](#check-integrity)
+  - [Programmatic Usage](#programmatic-usage)
+- [Configuration](#configuration)
+- [Project Structure](#project-structure)
+- [Technical Architecture](#technical-architecture)
+  - [Core Classes](#core-classes)
+  - [Data Models](#data-models)
+  - [Database Schema](#database-schema)
+- [Output Formats](#output-formats)
+  - [Console Output](#console-output)
+  - [JSON Output](#json-output)
+  - [HTML Output](#html-output)
+- [Use Cases](#use-cases)
+  - [System Administration](#system-administration)
+  - [Web Server Security](#web-server-security)
+  - [Development Environments](#development-environments)
+  - [Compliance & Auditing](#compliance--auditing)
+- [Security Considerations](#security-considerations)
+  - [Detects](#detects)
+  - [Does Not Detect](#does-not-detect)
+  - [Best Practices](#best-practices)
+- [Advanced Usage](#advanced-usage)
+- [Testing & Quality](#testing--quality)
+- [Skills Demonstrated](#skills-demonstrated)
+- [Troubleshooting](#troubleshooting)
+- [Future Enhancements](#future-enhancements)
+- [Development](#development)
+- [License](#license)
+- [Support](#support)
+- [Changelog](#changelog)
+
+---
 
 ## Overview
 
-Guardian is a Python-based File Integrity Monitor that creates baselines of your file system and continuously monitors for unauthorized changes. It's designed to detect potential security breaches, malware infections, and unauthorized system modifications by tracking file changes at the cryptographic hash level.
+**Guardian** is a Python-based File Integrity Monitor that creates baselines of your file system and continuously monitors for unauthorized changes.  
+It’s designed to detect potential security breaches, malware infections, and unauthorized system modifications by tracking file changes at the **cryptographic hash** level.
+
+---
 
 ## Features
 
 ### Core Functionality
-- **Baseline Creation**: Create cryptographic baselines of directories using SHA256, SHA1, and MD5 hashes
-- **Integrity Checking**: Compare current file states against established baselines
-- **Change Detection**: Identify added, modified, and removed files
-- **Comprehensive Reporting**: Generate detailed reports in multiple formats (console, JSON, HTML)
+- ✅ **Baseline Creation** – Create cryptographic baselines using SHA256, SHA1, and MD5 hashes  
+- ✅ **Integrity Checking** – Compare current file states against established baselines  
+- ✅ **Change Detection** – Identify added, modified, and removed files  
+- ✅ **Comprehensive Reporting** – Output reports to console, JSON, or HTML  
 
 ### Advanced Features
-- **Configurable Exclusions**: Exclude temporary files, logs, and other non-critical files
-- **Multiple Hash Algorithms**: Support for SHA256, SHA1, and MD5 for flexibility
-- **SQLite Database**: Efficient storage and retrieval of baseline data
-- **Comprehensive Logging**: Detailed logging with configurable levels
-- **Performance Optimization**: Chunked file reading for large files
-- **Critical File Monitoring**: Special alerts for critical system files
-- **Change History**: Track all changes over time in the database
+- ✅ **Configurable Exclusions** – Skip temporary files, logs, and non-critical paths  
+- ✅ **Multiple Hash Algorithms** – SHA256, SHA1, MD5  
+- ✅ **SQLite Database** – Efficient and portable storage  
+- ✅ **Comprehensive Logging** – Adjustable verbosity  
+- ✅ **Performance Optimization** – Chunked reads for large files  
+- ✅ **Critical File Monitoring** – Alerts for sensitive files  
+- ✅ **Change History** – Persistent historical tracking  
+- ✅ **Cross-Platform** – Windows, Linux, and macOS  
+- ✅ **Zero Dependencies** – 100% Python standard library  
+
+---
 
 ## Installation
 
 ### Prerequisites
-- Python 3.7 or higher
-- Standard library modules (no external dependencies required)
+- Python **3.7+**
+- Only standard library modules (no external installs)
 
 ### Quick Start
-1. Clone or download the Guardian files
-2. Ensure Python 3.7+ is installed
-3. Run Guardian with your desired options
 
 ```bash
 # Create a baseline
@@ -41,6 +89,8 @@ python guardian.py --baseline /etc --name "system_config_baseline"
 # Check integrity
 python guardian.py --check /etc
 ```
+
+---
 
 ## Usage
 
@@ -53,13 +103,13 @@ python guardian.py --baseline <path> [--name <baseline_name>]
 
 **Examples:**
 ```bash
-# Create baseline for system configuration
+# System configuration
 python guardian.py --baseline /etc --name "system_config_baseline"
 
-# Create baseline for web server files
+# Web server files
 python guardian.py --baseline /var/www --name "web_files_baseline"
 
-# Create baseline with auto-generated name
+# Auto-generate baseline name
 python guardian.py --baseline /home/user/documents
 ```
 
@@ -70,61 +120,105 @@ python guardian.py --check <path> [--output <format>] [--save-report] [--fail-on
 
 **Examples:**
 ```bash
-# Basic integrity check
+# Basic check
 python guardian.py --check /etc
 
-# Check with JSON output
+# JSON output
 python guardian.py --check /etc --output json
 
-# Check and save report to file
+# Save report to file
 python guardian.py --check /etc --save-report
 
-# Check and exit with error code if changes detected
+# Exit with error if changes detected
 python guardian.py --check /etc --fail-on-changes
 ```
 
-### Configuration
+---
 
-Guardian uses a configuration file (`guardian.conf`) for persistent settings:
+### Programmatic Usage
 
+Guardian can also be imported and used directly:
+
+```python
+from guardian import Guardian
+
+# Initialize Guardian
+guardian = Guardian()
+
+# Create baseline
+baseline_id = guardian.create_baseline("/path/to/monitor", "my_baseline")
+
+# Check integrity
+changes = guardian.check_integrity("/path/to/monitor")
+
+# Generate report
+report = guardian.reporter.generate_report(changes, "json")
+print(report)
+```
+
+---
+
+## Configuration
+
+**guardian.conf**
 ```ini
 [DEFAULT]
-# Database file for storing baselines
 database_file = guardian_baseline.db
-
-# Logging configuration
 log_file = guardian.log
 log_level = INFO
-
-# Hash algorithms to use (comma-separated)
 hash_algorithms = sha256,sha1,md5
-
-# File patterns to exclude from scanning
 exclude_patterns = *.tmp,*.log,*.cache,*.swp,.DS_Store,Thumbs.db
-
-# Maximum file size to scan
 max_file_size = 100MB
 
 [PATHS]
-# Paths to monitor
 monitor_paths = /etc,/var/log,/home
-
-# Paths to exclude from monitoring
 exclude_paths = /proc,/sys,/dev,/tmp
 
 [REPORTING]
-# Output format: console, json, html
 output_format = console
-
-# Generate detailed reports
 detailed_report = true
-
-# Alert on critical file changes
 alert_on_critical = true
-
-# Critical files that should trigger alerts
 critical_paths = /etc/passwd,/etc/shadow,/etc/sudoers
 ```
+
+---
+
+## Project Structure
+
+```
+Guardian/
+├── guardian.py           # Main application (500+ lines)
+├── guardian.conf         # Configuration file
+├── test_guardian.py      # Comprehensive test suite
+├── example_usage.py      # Interactive demonstration
+├── setup.py              # Setup script
+├── requirements.txt      # Minimal (stdlib only)
+├── README.md             # Documentation
+└── monitor.sh            # Sample monitoring script
+```
+
+---
+
+## Technical Architecture
+
+### Core Classes
+- **Guardian** – Main controller  
+- **GuardianConfig** – Configuration handling  
+- **GuardianDatabase** – SQLite operations  
+- **GuardianScanner** – File scanning and hashing  
+- **GuardianReporter** – Reporting in console/JSON/HTML  
+
+### Data Models
+- `FileInfo` – File metadata and hashes  
+- `ChangeReport` – Change detection results  
+- `ChangeType` – Enum: ADDED, MODIFIED, REMOVED  
+
+### Database Schema
+- `baselines` – Baseline metadata  
+- `files` – File information and hashes  
+- `change_history` – Historical tracking  
+
+---
 
 ## Output Formats
 
@@ -136,19 +230,15 @@ GUARDIAN FILE INTEGRITY MONITOR - CHANGE REPORT
 Scan completed at: 2024-01-15 14:30:25
 Total changes detected: 3
 
-[ADDED] (1 files)
-----------------------------------------
+[ADDED]
   /etc/new_config.conf
 
-[MODIFIED] (1 files)
-----------------------------------------
+[MODIFIED]
   /etc/passwd
     Old hash: 5d41402abc4b2a76b9719d911017c592...
     New hash: 098f6bcd4621d373cade4e832627b4f6...
-    Size: 1024 -> 2048 bytes
 
-[REMOVED] (1 files)
-----------------------------------------
+[REMOVED]
   /etc/old_config.conf
 ```
 
@@ -169,156 +259,180 @@ Total changes detected: 3
 ```
 
 ### HTML Output
-Generates a complete HTML report with styling, suitable for email or web display.
+Generates a complete, styled report suitable for email or web dashboards.
+
+---
 
 ## Use Cases
 
 ### System Administration
-- Monitor critical system directories (`/etc`, `/usr/bin`, `/sbin`)
-- Detect unauthorized configuration changes
-- Track system file modifications
+- Monitor `/etc`, `/usr/bin`, `/sbin`  
+- Detect config changes  
+- Track file modifications  
 
 ### Web Server Security
-- Monitor web application files
-- Detect unauthorized code changes
-- Track configuration file modifications
+- Monitor `/var/www`  
+- Detect unauthorized web code changes  
+- Validate deployment integrity  
 
 ### Development Environments
-- Monitor source code repositories
-- Detect unauthorized code changes
-- Track build artifact modifications
+- Watch source directories  
+- Detect unapproved edits  
+- Verify build artifacts  
 
-### Compliance and Auditing
-- Generate compliance reports
-- Track system changes for audit trails
-- Monitor critical business files
+### Compliance & Auditing
+- Generate audit trails  
+- Track changes for compliance  
+- Monitor sensitive business files  
+
+---
 
 ## Security Considerations
 
-### What Guardian Detects
-- **File Modifications**: Changes to existing files (content, permissions, timestamps)
-- **File Additions**: New files added to monitored directories
-- **File Deletions**: Files removed from monitored directories
-- **Permission Changes**: Changes to file permissions and ownership
+### Detects
+- File **modifications**, **additions**, **deletions**
+- **Permission** and **ownership** changes
 
-### What Guardian Does NOT Detect
-- **In-Memory Changes**: Modifications that don't touch the file system
-- **Network Activity**: Network-based attacks or data exfiltration
-- **Process Monitoring**: Running processes or system calls
-- **Registry Changes**: Windows registry modifications (Windows-specific)
+### Does Not Detect
+- In-memory modifications  
+- Network activity  
+- Running process changes  
+- Windows Registry edits  
 
 ### Best Practices
-1. **Regular Baselines**: Create fresh baselines after system updates
-2. **Critical Paths**: Focus monitoring on critical system directories
-3. **Exclusion Lists**: Properly configure exclusions to reduce noise
-4. **Regular Checks**: Schedule regular integrity checks
-5. **Secure Storage**: Protect baseline databases and configuration files
+- Regular baseline updates  
+- Focus on critical directories  
+- Tune exclusion patterns  
+- Schedule automated scans  
+- Protect baseline databases  
+
+---
 
 ## Advanced Usage
 
-### Automated Monitoring
-Create a simple monitoring script:
-
+### Automated Monitoring (`monitor.sh`)
 ```bash
 #!/bin/bash
-# monitor.sh - Automated Guardian monitoring
-
 BASELINE_PATH="/etc"
 REPORT_DIR="/var/log/guardian"
 
-# Create baseline if it doesn't exist
 if [ ! -f "guardian_baseline.db" ]; then
     python guardian.py --baseline "$BASELINE_PATH" --name "auto_baseline_$(date +%Y%m%d)"
 fi
 
-# Check integrity and save report
 python guardian.py --check "$BASELINE_PATH" --save-report --output json
-
-# Move report to log directory
 mv guardian_report_*.txt "$REPORT_DIR/"
 ```
 
 ### Integration with Monitoring Systems
-Guardian can be integrated with existing monitoring systems:
-
 ```bash
-# Check integrity and get exit code
 python guardian.py --check /etc --fail-on-changes
 if [ $? -ne 0 ]; then
-    # Send alert to monitoring system
-    curl -X POST "https://monitoring.example.com/alerts" \
-         -H "Content-Type: application/json" \
-         -d '{"alert": "File integrity violation detected"}'
+    curl -X POST "https://monitoring.example.com/alerts"          -H "Content-Type: application/json"          -d '{"alert": "File integrity violation detected"}'
 fi
 ```
 
+---
+
+## Testing & Quality
+
+- ✅ 7 test classes (`test_guardian.py`)  
+- ✅ Full workflow integration tests  
+- ✅ Robust error handling  
+- ✅ Cross-platform support  
+- ✅ 100% standard library  
+
+---
+
+## Skills Demonstrated
+
+### Cybersecurity
+- File Integrity Monitoring  
+- Cryptographic Hashing (SHA256/SHA1/MD5)  
+- System Auditing & HIDS Design  
+
+### Python Development
+- Object-Oriented Architecture  
+- SQLite database integration  
+- Argparse CLI design  
+- Logging & configuration management  
+- Dataclasses, enums, type hints  
+- Exception handling  
+
+### Software Engineering
+- Modular and extensible design  
+- Config-driven architecture  
+- Full documentation & testing  
+
+---
+
 ## Troubleshooting
 
-### Common Issues
+### "No baseline found for path"
+- **Cause:** Baseline not created  
+- **Fix:** Run with `--baseline` first  
 
-#### "No baseline found for path"
-- **Cause**: No baseline has been created for the specified path
-- **Solution**: Create a baseline first using `--baseline` option
+### "Permission denied"
+- **Cause:** Insufficient privileges  
+- **Fix:** Run as admin/root  
 
-#### "Permission denied" errors
-- **Cause**: Insufficient permissions to read files or directories
-- **Solution**: Run Guardian with appropriate privileges (e.g., `sudo`)
+### Large file exclusions
+- **Fix:** Adjust `max_file_size` or exclusions  
 
-#### Large file exclusions
-- **Cause**: Files exceed the configured maximum size limit
-- **Solution**: Adjust `max_file_size` in configuration or exclude large files
+### Performance issues
+- **Fix:** Narrow monitored scope  
 
-#### Performance issues with large directories
-- **Cause**: Scanning very large directory trees
-- **Solution**: Use exclusion patterns to reduce scan scope
-
-### Log Analysis
-Guardian creates detailed logs in the configured log file. Common log entries:
-
+### Log Example
 ```
-2024-01-15 14:30:25,123 - guardian - INFO - Creating baseline 'system_config' for path: /etc
+2024-01-15 14:30:25,123 - guardian - INFO - Creating baseline '/etc'
 2024-01-15 14:30:25,456 - guardian - INFO - Scanned 1,234 files
-2024-01-15 14:30:25,789 - guardian - INFO - Baseline created successfully. ID: 1, Files: 1,234
+2024-01-15 14:30:25,789 - guardian - INFO - Baseline created successfully
 ```
+
+---
+
+## Future Enhancements
+- Email/SMS alerts  
+- Webhook integrations  
+- Real-time monitoring  
+- Web dashboard  
+- SIEM integration  
+- Advanced filtering  
+
+---
 
 ## Development
 
-### Running Tests
+### Run Tests
 ```bash
 python test_guardian.py
 ```
 
-### Code Structure
-- `guardian.py`: Main application and core classes
-- `guardian.conf`: Configuration file template
-- `test_guardian.py`: Comprehensive test suite
-- `requirements.txt`: Dependencies (minimal)
-
 ### Contributing
-1. Fork the repository
-2. Create a feature branch
-3. Add tests for new functionality
-4. Ensure all tests pass
-5. Submit a pull request
+1. Fork repository  
+2. Create feature branch  
+3. Add tests  
+4. Submit pull request  
+
+---
 
 ## License
+This project is open source under the **MIT License**.
 
-This project is open source and available under the MIT License.
+---
 
 ## Support
+- Review troubleshooting section  
+- Check example test cases  
+- Open a GitHub issue  
 
-For issues, questions, or contributions:
-1. Check the troubleshooting section
-2. Review the test cases for usage examples
-3. Create an issue with detailed information
+---
 
 ## Changelog
 
-### Version 1.0.0
-- Initial release
-- Core FIM functionality
-- Multiple output formats
-- SQLite database storage
-- Comprehensive configuration system
+### v1.0.0
+- Initial release  
+- Core FIM functionality  
+- Multi-format reporting  
+- SQLite baseline storage  
 - Full test coverage
-
